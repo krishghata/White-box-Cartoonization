@@ -10,7 +10,10 @@ input_photo = None
 final_out = None
 sess = None
 
-def init(model_path): 
+def init():
+    load_model('saved_models')
+
+def load_model(model_path): 
     global input_photo, final_out, sess
 
     input_photo = tf.placeholder(tf.float32, [1, None, None, 3])
@@ -66,7 +69,7 @@ if __name__ == '__main__':
     if not os.path.exists(save_folder):
         os.mkdir(save_folder)
 
-    init(model_path)
+    init()
 
     ip_file = os.path.join(load_folder, 'actress2.jpg')
     op_file = os.path.join(save_folder, 'actress2.jpg')
